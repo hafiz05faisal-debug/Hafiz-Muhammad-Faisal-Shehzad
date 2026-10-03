@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dr. Hafiz Muhammad Faisal Shehzad, Associate Professor and Chairman, Department of Computer Science, University of Sargodha. Research in information systems, BIM adoption, open government data and machine learning.">
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dr. Hafiz Muhammad Faisal Shehzad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a scholar's homepage — sticky section nav, portrait hero, then single reading column with a filterable bibliography */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#152030; --muted:#5a6676; --line:#dde2e9;
+  --accent:#1d5a86; --accent-soft:#e3edf5; --gold:#9a6f1e;
+  --display:"Literata", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f151d; --surface:#161e29; --ink:#e6ebf1; --muted:#9aa6b5; --line:#263242;
+  --accent:#7db4de; --accent-soft:#1a2b3c; --gold:#d6a952; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f151d; --surface:#161e29; --ink:#e6ebf1; --muted:#9aa6b5; --line:#263242;
+  --accent:#7db4de; --accent-soft:#1a2b3c; --gold:#d6a952; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:20px;min-height:56px}
+.nav .mark{font-family:var(--display);font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap}
+.nav ul a:hover{color:var(--accent)}
+@media (max-width:720px){.nav .mark{display:none}.nav ul{margin-left:0}}
+
+/* hero */
+.hero{padding-block:56px 40px;display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start}
+.portrait{width:200px;max-width:100%;aspect-ratio:1;border-radius:6px;object-fit:cover;border:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,46px);line-height:1.12;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em}
+h1 .hon{display:block;font-size:.5em;font-weight:400;color:var(--muted);letter-spacing:0;margin-bottom:4px}
+.role{font-size:17px;color:var(--ink);margin:0 0 4px}
+.role b{font-weight:600}
+.affil{color:var(--muted);margin:0 0 18px}
+.lede{max-width:64ch;margin:0 0 22px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a::after{content:"↗";font-size:12px;color:var(--muted)}
+@media (max-width:680px){.hero{grid-template-columns:1fr;gap:22px;padding-block:32px 28px}.portrait{width:140px}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:8px}
+.stat{padding:18px 16px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat .n{font-family:var(--display);font-size:32px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:13px;color:var(--muted);margin-top:6px}
+@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections */
+section{padding-block:48px 8px;scroll-margin-top:64px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+h2{font-family:var(--display);font-size:26px;font-weight:600;margin:0;letter-spacing:-.005em}
+.sec-head .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+h3{font-family:var(--display);font-size:18px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 14px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.two > *{min-width:0}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.tags li{background:var(--accent-soft);color:var(--ink);padding:6px 12px;border-radius:4px;font-size:14px}
+
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+/* timeline lists */
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:108px 1fr;gap:16px;padding-block:12px;border-bottom:1px solid var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.tl .what{min-width:0}
+.tl .what b{font-weight:600}
+.tl .what span{display:block;color:var(--muted);font-size:14.5px}
+@media (max-width:480px){.tl li{grid-template-columns:1fr;gap:2px}}
+
+/* publications */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.filters button{font:500 13.5px var(--body);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters button .c{font-family:var(--mono);font-size:12px;opacity:.7;margin-left:4px}
+.search{flex:1 1 200px;min-width:0;font:14px var(--body);padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.pubs{list-style:none;margin:0;padding:0}
+.pub{display:grid;grid-template-columns:56px 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.pub .yr{font-family:var(--mono);font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.pub .t{font-family:var(--display);font-size:16.5px;font-weight:600;line-height:1.4;margin:0 0 4px}
+.pub .a{font-size:14px;color:var(--muted);margin:0 0 4px}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .v{font-size:14px;margin:0;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.pub .v i{font-style:italic}
+.badge{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.badge.isi{border-color:var(--accent);color:var(--accent)}
+.badge.if{border-color:var(--gold);color:var(--gold)}
+.pub-empty{color:var(--muted);padding-block:20px}
+.more{margin-top:16px;font:500 14px var(--body);background:none;border:1px solid var(--line);padding:8px 16px;border-radius:999px;color:var(--ink);cursor:pointer}
+.more:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:480px){.pub{grid-template-columns:1fr;gap:2px}}
+
+/* supervision table */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.st{font-family:var(--mono);font-size:11.5px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.st.done{background:var(--accent-soft);color:var(--accent)}
+.st.on{border:1px dashed var(--muted);color:var(--muted)}
+.deg{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+
+.plain{margin:0;padding-left:18px}
+.plain li{margin-bottom:8px}
+.plain li span{color:var(--muted)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact > div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;min-width:0}
+.contact .v{font-size:15.5px;word-break:break-word;user-select:all}
+.copy{margin-top:10px;font:500 13px var(--body);background:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);cursor:pointer}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+
+footer{margin-top:56px;border-top:1px solid var(--line);padding-block:22px 40px;color:var(--muted);font-size:13.5px}
+</style>
+
+</head>
+<body>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="mark" href="#top">H. M. Faisal Shehzad</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#supervision">Supervision</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <img class="portrait" src="data:image/jpeg;base64,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" alt="Portrait of Dr. Hafiz Muhammad Faisal Shehzad">
+    <div>
+      <p class="eyebrow">Information Systems · Data Science · Machine Learning</p>
+      <h1><span class="hon">Dr.</span>Hafiz Muhammad Faisal Shehzad</h1>
+      <p class="role"><b>Associate Professor</b> and <b>Chairman</b>, Department of Computer Science</p>
+      <p class="affil">University of Sargodha, Pakistan</p>
+      <p class="lede">I study how organisations adopt information systems, from Building Information Modelling in construction to open government data in the public sector, and I apply machine learning and deep learning to problems in healthcare, agriculture and language. I lead the Department of Computer Science at the University of Sargodha, where I have taught since 2008.</p>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?user=v_ny464AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-6364-997X" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.researchgate.net/profile/Hafiz-Faisal-Shehzad" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="https://www.linkedin.com/in/dr-hafiz-muhammad-faisal-shehzad-29752922/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.su.edu.pk/facultyprofile/91" target="_blank" rel="noopener">University profile</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats" aria-label="At a glance">
+    <div class="stat"><div class="n">41</div><div class="l">Journal articles</div></div>
+    <div class="stat"><div class="n">20</div><div class="l">In impact-factor journals</div></div>
+    <div class="stat"><div class="n">28</div><div class="l">MS &amp; PhD scholars supervised</div></div>
+    <div class="stat"><div class="n">17+</div><div class="l">Years in higher education</div></div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><h2>About</h2></div>
+    <div class="two">
+      <div>
+        <p>I completed my PhD in Information Systems at Universiti Teknologi Malaysia in 2022 as an HEC-funded International Doctoral Fellow. My doctoral research modelled the interoperability factors behind Building Information Modelling adoption in the Malaysian construction industry, published in <i>Computers in Industry</i> and <i>Construction Innovation</i>.</p>
+        <p>As Chairman, I have led NCEAC accreditation visits for the BSCS, BSIT, BS AI and BS Data Science programmes and the curriculum development for the department's AI and Data Science degrees. In 2025 I served on the HEC National Curriculum Review Committee for Computing.</p>
+        <p class="label" style="margin-top:22px">Honours</p>
+        <ul class="plain">
+          <li>Best Paper Award, International Conference of Reliable Information and Communication Technology <span>(Johor Bahru, 2020)</span></li>
+          <li>HRDI-UESTP Scholarship, Higher Education Commission <span>(2018–2021)</span></li>
+          <li>International Doctoral Fellowship, Universiti Teknologi Malaysia</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Appointments</p>
+        <ul class="tl">
+          <li><span class="when">2024 –</span><span class="what"><b>Chairman, Department of Computer Science</b><span>University of Sargodha</span></span></li>
+          <li><span class="when">2024 –</span><span class="what"><b>Associate Professor</b><span>University of Sargodha</span></span></li>
+          <li><span class="when">2008 – 2024</span><span class="what"><b>Lecturer</b><span>University of Sargodha</span></span></li>
+          <li><span class="when">2012 –</span><span class="what"><b>Distance Learning Tutor</b><span>Allama Iqbal Open University</span></span></li>
+          <li><span class="when">2012</span><span class="what"><b>Master Trainer ICT</b><span>Govt. of the Punjab, Staff Development Programme</span></span></li>
+          <li><span class="when">2007 – 2008</span><span class="what"><b>Lecturer &amp; Network Administrator</b><span>Al-Farooq Science College, Gujranwala</span></span></li>
+        </ul>
+        <p class="label" style="margin-top:22px">Education</p>
+        <ul class="tl">
+          <li><span class="when">2022</span><span class="what"><b>PhD, Information Systems</b><span>Universiti Teknologi Malaysia · CGPA 3.67/4</span></span></li>
+          <li><span class="when">2013</span><span class="what"><b>MS, Computer Science</b><span>University of Sargodha</span></span></li>
+          <li><span class="when">2007</span><span class="what"><b>Master of Information Technology</b><span>University of the Punjab</span></span></li>
+          <li><span class="when">2005</span><span class="what"><b>Bachelor of Commerce</b><span>University of the Punjab</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-head"><h2>Research</h2></div>
+    <p class="label">Interests</p>
+    <ul class="tags" style="margin-bottom:30px">
+      <li>Information Systems</li><li>Technology Adoption</li><li>Building Information Modelling</li><li>Open Government Data</li><li>Machine Learning</li><li>Deep Learning in Medical Imaging</li><li>Semantic Web &amp; Ontologies</li><li>Data Mining</li><li>Big Data</li><li>Social Network Analysis</li><li>Databases</li><li>Large Language Models</li>
+    </ul>
+    <p class="label">Projects &amp; consultancy</p>
+    <ul class="tl">
+      <li><span class="when">2022 –</span><span class="what"><b>Citrus Value Chain Project, Sargodha</b><span>Joint venture of University of Sargodha, University of Agriculture Faisalabad, Punjab Agriculture Department and Citrus Research Institute</span></span></li>
+      <li><span class="when">2022 – 2024</span><span class="what"><b>Feasibility Study for NSDI Pakistan</b><span>Survey of Pakistan, Ministry of Defence</span></span></li>
+      <li><span class="when">2020 – 2021</span><span class="what"><b>Interoperability adoption model for e-government in Saudi Arabia</b><span>Deanship of Scientific Research, Saudi Electronic University, Riyadh</span></span></li>
+      <li><span class="when">Ongoing</span><span class="what"><b>Software architecture consultancy</b><span>Switch2itech, Sargodha: system design and software engineering practice</span></span></li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <div class="sec-head"><h2>Publications</h2><span class="meta" id="pubCount"></span></div>
+    <div class="filters" role="group" aria-label="Filter publications">
+      <button type="button" data-f="all" aria-pressed="true">All<span class="c"></span></button>
+      <button type="button" data-f="isi" aria-pressed="false">ISI / JCR<span class="c"></span></button>
+      <button type="button" data-f="scopus" aria-pressed="false">Scopus<span class="c"></span></button>
+      <button type="button" data-f="hec" aria-pressed="false">HEC<span class="c"></span></button>
+      <button type="button" data-f="conf" aria-pressed="false">Conference &amp; chapters<span class="c"></span></button>
+      <input class="search" id="pubSearch" type="search" placeholder="Search titles or venues" aria-label="Search publications">
+    </div>
+    <ol class="pubs" id="pubList"></ol>
+    <button class="more" id="pubMore" type="button">Show all</button>
+  </section>
+
+  <section id="supervision">
+    <div class="sec-head"><h2>Research supervision</h2><span class="meta" id="supMeta"></span></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Scholar</th><th>Thesis</th><th>Degree</th><th>Role</th><th>Status</th></tr></thead>
+        <tbody id="supBody"></tbody>
+      </table>
+    </div>
+    <p class="label" style="margin-top:30px">Recent capstone projects supervised</p>
+    <ul class="tags">
+      <li>Bridging Healthcare Gaps with AI</li><li>Agentic AI Real-Time Trading Assistant</li><li>Business Automation Tool</li><li>AI-Based E-Commerce System</li><li>AI-Powered Virtual Try-On Store</li><li>Biovision AI</li><li>Interior Design Advisor</li><li>Student Education Fundraising Platform</li><li>Smart Shopping</li>
+    </ul>
+  </section>
+
+  <section id="teaching">
+    <div class="sec-head"><h2>Teaching</h2></div>
+    <div class="two">
+      <div>
+        <p class="label">Courses taught</p>
+        <ul class="tags">
+          <li>Natural Language Processing</li><li>Digital Image Processing</li><li>Research Methodology</li><li>Database Systems</li><li>Advanced Database Management</li><li>Database Administration</li><li>Enterprise Application Development</li><li>E-Commerce Application Development</li><li>Programming Fundamentals</li><li>Object Oriented Programming</li><li>Advanced Programming (Python)</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Workshops led</p>
+        <ul class="plain">
+          <li>Mastering Data Analysis: SPSS Fundamentals <span>(Elite Global Excellence, Malaysia, 2024)</span></li>
+          <li>Linux Administration &amp; Ethical Hacking <span>(University of Sargodha)</span></li>
+          <li>Seminar: Computing for a Connected, Intelligent and Sustainable Future <span>(Research Arena 2025)</span></li>
+          <li>Departmental workshops on GitHub, LinkedIn, entrepreneurship and generative-AI graphic design <span>(2025)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="service">
+    <div class="sec-head"><h2>Service &amp; professional roles</h2></div>
+    <div class="two">
+      <div>
+        <p class="label">National &amp; external</p>
+        <ul class="tl">
+          <li><span class="when">2025</span><span class="what"><b>Member, National Curriculum Review Committee for Computing</b><span>Higher Education Commission, Pakistan</span></span></li>
+          <li><span class="when">2024 –</span><span class="what"><b>Focal Person for Affiliation</b><span>National Computing Education Accreditation Council (NCEAC)</span></span></li>
+          <li><span class="when">2025 –</span><span class="what"><b>External Member, Relevance Assessment Committee</b><span>University of Education, Lahore</span></span></li>
+          <li><span class="when">2025 –</span><span class="what"><b>External Expert, Boards of Studies</b><span>University of Rasul, Mandi Bahauddin · Mukabbir University, Gujrat</span></span></li>
+          <li><span class="when">2025 –</span><span class="what"><b>Director of Innovation &amp; Technology</b><span>Elite Global Excellence, Malaysia</span></span></li>
+          <li><span class="when">2023</span><span class="what"><b>Advisor, Interview Committees</b><span>Punjab Public Service Commission</span></span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Editorial &amp; review</p>
+        <ul class="plain">
+          <li>Reviewer: <i>Engineering, Construction and Architectural Management</i>, <i>International Journal of Construction Management</i>, <i>International Journal of Building Pathology and Adaptation</i>, <i>PLOS One</i></li>
+          <li>Editorial board, <i>International Journal of Architectural Engineering Technology</i></li>
+          <li>Reviewer, IEEE INMIC 2023 and IEEE HITE 2025, Lahore</li>
+        </ul>
+        <p class="label" style="margin-top:22px">Invited talks</p>
+        <ul class="plain">
+          <li>International Congress and Expo on Infrastructure and Construction <span>(Barcelona, 2024)</span></li>
+          <li>Computer Science and Information Technology Virtual <span>(2023)</span></li>
+          <li>Infrastructure and Civil Engineering World Forum <span>(Barcelona, 2022)</span></li>
+          <li>World Conference on Forensic Science <span>(Osaka, 2021)</span></li>
+        </ul>
+        <p class="label" style="margin-top:22px">Memberships</p>
+        <ul class="tags"><li>ACM</li><li>International Association of Engineers</li><li>International Society for Applied Computing</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><h2>Contact</h2></div>
+    <div class="contact">
+      <div><p class="label">Email</p><div class="v" id="cEmail">muhammad.faisal@uos.edu.pk</div><button class="copy" type="button" data-copy="cEmail">Copy</button></div>
+      <div><p class="label">Office phone</p><div class="v" id="cPhone">+92 48 9230879, ext. 367</div><button class="copy" type="button" data-copy="cPhone">Copy</button></div>
+      <div><p class="label">Office</p><div class="v">Department of Computer Science, University of Sargodha, University Road, Sargodha 40100, Pakistan</div></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Hafiz Muhammad Faisal Shehzad · University of Sargodha</footer>
+</main>
+
+<script>
+const ME = /(Shehzad|Shahzad|Faisal)[^,;&]*/;
+const P = [
+ // ISI / JCR
+ {y:2025,c:"isi",t:"Semantic web ontology for structured knowledge representation and clinical decision support in eye diseases",a:"Anjum, F., Maqbool, F., Razzaq, M. S., Shehzad, H. M. F., et al.",v:"Scientific Reports",f:"3.9"},
+ {y:2025,c:"isi",t:"DSSCC net: enhanced skin cancer classification using SMOTE Tomek and optimized convolutional neural network",a:"Javaid, M. A., Shahzad, M. S., Shehzad, H. M. F., et al.",v:"Scientific Reports",f:"3.9"},
+ {y:2025,c:"isi",t:"Exploring optimizer efficiency for facial expression recognition with convolutional neural networks",a:"Madni, S. H. H., Pathmanatan, L., Faheem, M., Shehzad, H. M. F., & Shah, S.",v:"The Journal of Engineering",f:"1.4"},
+ {y:2025,c:"isi",t:"Semantic web-based ontology: a comprehensive framework for cardiovascular knowledge representation",a:"Sabir, S., Maqbool, F., Saad Razzaq, M., et al., & Shehzad, H. M. F.",v:"BMC Cardiovascular Disorders",f:"2.5"},
+ {y:2024,c:"isi",t:"Using theory integration to explain online impulse buying behavior in social commerce",a:"Abdelsalam, S., Salim, N., Alias, R. A., et al., & Shehzad, H. M. F.",v:"IEEE Access",f:"3.9"},
+ {y:2024,c:"isi",t:"Examining the effect of interoperability factors on building information modelling (BIM) adoption in Malaysia",a:"Ahmed, Y. A., Shehzad, H. M. F., Khurshid, M. M., et al.",v:"Construction Innovation",f:"2.4"},
+ {y:2022,c:"isi",t:"Computation and memory optimized spectral domain convolutional neural network for throughput and energy-efficient inference",a:"Rizvi, S. M., Ab Rahman, A. A., Sheikh, U. U., Fuad, K. A. A., & Shehzad, H. M. F.",v:"Applied Intelligence",f:"5.3"},
+ {y:2022,c:"isi",t:"An integrated framework based deep learning for cancer classification using microarray datasets",a:"Alrefai, N., Ibrahim, O., Shehzad, H. M. F., et al.",v:"Neurocomputing",f:"5.7"},
+ {y:2022,c:"isi",t:"Understanding the determinants of building information modelling adoption",a:"Ahmed, Y. A., & Shehzad, H. M. F.",v:"Construction Innovation",f:"2.4"},
+ {y:2022,c:"isi",t:"Factors influencing citizens' intention to use open government data: a case study of Pakistan",a:"Khurshid, M. M., Zakaria, N. H., Arfeen, M. I., Rashid, A., Nasir, S. U., & Shehzad, H. M. F.",v:"Big Data and Cognitive Computing",f:"3.7"},
+ {y:2022,c:"isi",t:"YouTube based religious hate speech and extremism detection dataset with machine learning baselines",a:"Ashraf, N., Rafiq, A., Butt, S., Shehzad, H. M. F., Sidorov, G., & Gelbukh, A.",v:"Journal of Intelligent & Fuzzy Systems",f:"2.0"},
+ {y:2021,c:"isi",t:"The role of interoperability dimensions in building information modelling",a:"Shehzad, H. M. F., Ibrahim, R. B., Yusof, A. F., Khaidzir, K. A. M., Iqbal, M., & Razzaq, S.",v:"Computers in Industry",f:"10.0"},
+ {y:2021,c:"isi",t:"Modeling academic research collaborator selection using an integrated model",a:"Husain, O., Salim, N., Alias, R. A., et al., Faisal, H. M., & Hamzah, M.",v:"IEEE Access",f:"3.4"},
+ {y:2021,c:"isi",t:"A comprehensive review of modern trends in optimization techniques applied to hybrid microgrid systems",a:"Arfeen, Z. A., Sheikh, U. U., Azam, M. K., Hassan, R., Faisal Shehzad, H. M., et al.",v:"Concurrency and Computation: Practice and Experience",f:"1.8"},
+ {y:2021,c:"isi",t:"A model of influencing factors of online social networks for informal learning in research institutes",a:"Al-Sabaawi, M. Y. M., Dahlan, H. M., Shehzad, H. M. F., & Alshaher, A. A.",v:"Social Network Analysis and Mining",f:"3.1"},
+ {y:2021,c:"isi",t:"Behavioral intention model for green information technology adoption in Nigerian manufacturing industries",a:"Buba, A. K., Ibrahim, O., & Shehzad, H. M. F.",v:"Aslib Journal of Information Management",f:"3.0"},
+ {y:2021,c:"isi",t:"Fake news data exploration and analytics",a:"Awan, M. J., Yasin, A., Nobanee, H., et al., & Shahzad, H. M. F.",v:"Electronics",f:"2.9"},
+ {y:2020,c:"isi",t:"Recent developments of BIM adoption based on categorization, identification and factors: a systematic literature review",a:"Faisal Shehzad, H. M., Ibrahim, R., Yusof, A. F., Khaidzir, K. A. M., Shawkat, S., & Ahmad, S.",v:"International Journal of Construction Management",f:"1.7"},
+ {y:2020,c:"isi",t:"Modeling of open government data for public sector organizations using the potential theories and determinants: a systematic review",a:"Khurshid, M. M., Zakaria, N. H., Rashid, A., Ahmad, M. N., Arfeen, M. I., & Faisal Shehzad, H. M.",v:"Informatics",f:"2.6"},
+ {y:2020,c:"isi",t:"En route of electric vehicles with the vehicle to grid technique in distribution networks: status and technological review",a:"Arfeen, Z. A., Khairuddin, A. B., Munir, A., Azam, M. K., Faisal, M., & Arif, M. S. B.",v:"Energy Storage",f:"3.3"},
+ // Scopus
+ {y:2026,c:"scopus",t:"An adaptive elliptic curve cryptography framework for robust, scalable and secure IoT blockchain applications",a:"Bibi, U., Aamir, K. M., Jaleel, A., & Shehzad, H. M. F.",v:"Power System Technology"},
+ {y:2025,c:"scopus",t:"An enhanced CNN-based P-EDR mechanism for diagnosis of diabetic retinopathy using machine learning",a:"Hussain, M., Ahmed, H. A., Babar, M. Z., Ali, A., Shahzad, H. M., et al.",v:"Engineering, Technology and Applied Science Research"},
+ {y:2025,c:"scopus",t:"Examining social acceptability of solar innovations in smart cities",a:"Khurshid, M. M., Shehzad, H. M. F., Rashid, A., & Adeel, U.",v:"Civil Engineering Journal"},
+ {y:2025,c:"scopus",t:"Bridging the gap: empowering manufacturing and production SMEs through an industrial Internet of Things adoption model",a:"Shah, S. S., Madni, S. H. H., Hashim, S. Z. M., Faheem, M., & Shehzad, H. M. F.",v:"IET Collaborative Intelligent Manufacturing"},
+ {y:2025,c:"scopus",t:"Optimized skin cancer detection through dermoscopic imaging using EfficientNetB4 architecture",a:"Suleman, M., Shehzad, H. M. F., Razzaq, S., Awan, A. S., & Shahbaz, N.",v:"Journal of Computing & Biomedical Informatics"},
+ {y:2024,c:"scopus",t:"Open government data intention-adoption behavioural model for public sector organisations: a technological innovation perspective",a:"Khurshid, M. M., Rashid, A., Yusof, S., Ahmad, R. W., & Shehzad, H. M. F.",v:"Emerging Science Journal"},
+ {y:2022,c:"scopus",t:"Determinants of building information modeling adoption: the case of the Malaysian construction industry",a:"Shehzad, H. M. F., Ibrahim, R., Khaidzir, K. A. M., Maqbool, F., Fuady, M. J., Ilyas, M., & Yusof, A. F.",v:"Journal of Information Technology Management"},
+ {y:2022,c:"scopus",t:"A literature review of technology adoption theories and acceptance models for novelty in building information modeling",a:"Shehzad, H. M. F., Ibrahim, R., Khaidzir, K. A. M., Alrefai, N., Chweya, R. K., Zrekat, M. M. Y., & Hassan, O. H. A.",v:"Journal of Information Technology Management"},
+ {y:2022,c:"scopus",t:"Understanding the role of social media in informal learning by researchers in Malaysian higher education",a:"Al-Sabaawi, M. Y. M., Dahlan, H. M., Alshaher, A. A., & Shehzad, H. M. F.",v:"International Journal of Innovation and Learning"},
+ {y:2022,c:"scopus",t:"Step-by-step in discovering future-ready educator attributes",a:"Shehzad, H. M. F., Zeehan, F., Alias, R. A., Tasir, Z., & Aziz, N. A.",v:"International Journal of Special Education"},
+ {y:2021,c:"scopus",t:"Social media usage for informal learning in Malaysia: academic researcher perspective",a:"Al-Sabaawi, M. Y. M., Dahlan, H. M., & Shehzad, H. M. F.",v:"International Journal of Information and Communication Technology Education"},
+ {y:2021,c:"scopus",t:"Performance evaluation of TCP Cubic, Compound TCP and NewReno under Windows 20H1, via 802.11n link to LTE core network",a:"Ahsan, M., Awan, M. J., Yasin, A., Bahaj, S. A., & Shehzad, H. M. F.",v:"Annals of the Romanian Society for Cell Biology"},
+ {y:2021,c:"scopus",t:"The customized convolutional neural network of face emotion expression classification",a:"Awan, M. J., Raza, A., Yasin, A., Shehzad, H. M. F., & Butt, I.",v:"Annals of the Romanian Society for Cell Biology"},
+ {y:2021,c:"scopus",t:"Sentiment analysis of online food reviews using big data analytics",a:"Ahmed, H. M., Awan, M. J., Khan, N. S., Yasin, A., & Faisal Shehzad, H. M.",v:"Elementary Education Online"},
+ {y:2021,c:"scopus",t:"Flight web searches analytics through big data",a:"Khalil, A., Awan, M. J., Yasin, A., Singh, V. P., & Shehzad, H. M. F.",v:"International Journal of Computer Applications in Technology"},
+ {y:2021,c:"scopus",t:"Fake profile recognition using big data analytics in social media platforms",a:"Awan, M. J., Khan, M. A., Ansari, Z. K., Yasin, A., & Shehzad, H. M. F.",v:"International Journal of Computer Applications in Technology"},
+ {y:2020,c:"scopus",t:"Fake news classification bimodal using convolutional neural network and long short-term memory",a:"Abdullah, A., Awan, M., Shehzad, M., & Ashraf, M.",v:"International Journal of Emerging Technologies in Learning"},
+ // HEC
+ {y:2024,c:"hec",t:"A review on cloud computing threats, security and possible solutions",a:"Shehzad, H. M. F., Naz, R., Muneer, A., Rafiq, A., Razzaq, S., & Zaidi, M. A. S.",v:"International Journal of Innovations in Science & Technology"},
+ {y:2022,c:"hec",t:"Role of machine learning in short-listing future suicidal candidates",a:"Sadia, S., Tariq, F., Zarif, P., Naheed, K., Rafiq, A., & Faisal, H. M.",v:"Pakistan Journal of Medical & Health Sciences"},
+ {y:2015,c:"hec",t:"The evaluation of national library websites of Bangladesh, India, Iran, Pakistan and Sri Lanka",a:"Khan, N. M., & Shehzad, F.",v:"Pakistan Library & Information Science Journal"},
+ {y:2014,c:"hec",t:"Patterns of propagating bugs in open source software",a:"Shehzad, M. F., Lali, M. I., & Nawaz, M. S.",v:"NED University Journal of Research"},
+ // Conference & chapters
+ {y:2023,c:"conf",t:"Enhancing access to legal information: AI-driven Constitution of Pakistan search engine",a:"Naz, R., & Shehzad, H. M. F.",v:"1st Int. Conf. on Women Development in Engineering Science & Technology"},
+ {y:2021,c:"conf",t:"Digital nomads: a systematic literature review",a:"Shawkat, S., Abd Rozan, M. Z., Salim, N. B., & Shehzad, H. M. F.",v:"IEEE ICRIIS 2021"},
+ {y:2021,c:"conf",t:"Covid-19 detection by using deep learning-based custom convolution neural network",a:"Awan, M. J., Imtiaz, M. W., Usama, M., Rehman, A., Ayesha, N., & Shehzad, H. M. F.",v:"IEEE ICIC 2021"},
+ {y:2021,c:"conf",t:"Open government data adoption and implementation research: a meta-analysis",a:"Khurshid, M. M., Zakaria, N. H., Rashid, A., Arfeen, M. I., & Shehzad, H. M. F.",v:"MDPI 1st Int. Electronic Conf. on Information"},
+ {y:2020,c:"conf",t:"Building information modelling adoption: systematic literature review",a:"Shehzad, H. M. F., Ibrahim, R. B., Yusof, A. F., Khaidzir, K. A. M., Hassan, O. H. A., & Abdalla, S. A.",v:"IRICT 2020 · Springer (book chapter) · Best Paper Award"},
+ {y:2020,c:"conf",t:"Building information modelling adoption model for Malaysian architecture, engineering and construction industry",a:"Shehzad, H. M. F., Ibrahim, R. B., Yusof, A. F., Khaidzir, K. A. M., Khurshid, M. M., & Othman, F. Z.",v:"IRICT 2020 · Springer (book chapter)"},
+ {y:2020,c:"conf",t:"An intention-adoption behavioral model for open government data in Pakistan's public sector organizations",a:"Khurshid, M. M., Zakaria, N. H., Arfeen, M. I., Rashid, A., Shehzad, H. M. F., & Ahmad, M. N.",v:"IFIP Transfer and Diffusion of IT · Springer (book chapter)"},
+ {y:2020,c:"conf",t:"Factors influencing the interoperability of building information modeling in the AEC industry",a:"Shehzad, H. M. F., Ibrahim, R., Yusof, A. F., Khaidzir, K. A. M., Ghani, I., & Buba, A. K.",v:"ICONI 2020"},
+ {y:2020,c:"conf",t:"Readiness factors influencing the Internet of Things in higher learning institutions for e-learning",a:"Ali, J., Latiff, M. S. A., Shehzad, H. M. F., & Madni, S. H. H.",v:"ICONI 2020"},
+ {y:2020,c:"conf",t:"A niche particle swarm optimization: perks and perspectives",a:"Arfeen, Z. A., Abdullah, M. P., Shehzad, M. F., et al.",v:"IEEE ICSET 2020"},
+ {y:2020,c:"conf",t:"Energy management scheme for electric vehicles with rapid-charging facility utilizing grid power storage packs and photovoltaic generator",a:"Arfeen, Z. A., Sheikh, U. U., Khalid, S. A., Saeed, M. S., Hafeez, F., Faisal, M., & Ahmed, H. B.",v:"IEEE I2CACIS 2020"},
+ {y:2019,c:"conf",t:"Building information modeling: factors affecting the adoption in the AEC industry",a:"Shehzad, H. M. F., Ibrahim, R. B., Yusof, A. F., & Khaidzir, K. A. M.",v:"IEEE ICRIIS 2019"},
+ {y:2014,c:"conf",t:"Error propagation in large software projects",a:"Shehzad, M. F., Lali, M. I., Idrees, M., & Nawaz, M. S.",v:"MCCT'14"}
+];
+const LABEL={isi:"ISI / JCR",scopus:"Scopus",hec:"HEC",conf:"Conference"};
+const esc=s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+let filter="all", q="", expanded=false;
+const list=document.getElementById("pubList"), more=document.getElementById("pubMore");
+document.querySelectorAll(".filters button").forEach(b=>{
+  const f=b.dataset.f; b.querySelector(".c").textContent=f==="all"?P.length:P.filter(p=>p.c===f).length;
+  b.addEventListener("click",()=>{filter=f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));render();});
+});
+document.getElementById("pubSearch").addEventListener("input",e=>{q=e.target.value.toLowerCase();render();});
+more.addEventListener("click",()=>{expanded=!expanded;render();});
+function render(){
+  const rows=P.filter(p=>(filter==="all"||p.c===filter)&&(!q||(p.t+" "+p.v+" "+p.a).toLowerCase().includes(q))).sort((a,b)=>b.y-a.y);
+  const limit=(expanded||q||filter!=="all")?rows.length:10;
+  list.innerHTML=rows.slice(0,limit).map(p=>`<li class="pub"><span class="yr">${p.y}</span><div><p class="t">${esc(p.t)}</p><p class="a">${esc(p.a).replace(ME,m=>"<b>"+m+"</b>")}</p><p class="v"><i>${esc(p.v)}</i><span class="badge ${p.c==="isi"?"isi":""}">${LABEL[p.c]}</span>${p.f?`<span class="badge if">IF ${p.f}</span>`:""}</p></div></li>`).join("")||`<li class="pub-empty">No publications match that search.</li>`;
+  more.hidden=rows.length<=10||filter!=="all"||!!q;
+  more.textContent=expanded?"Show fewer":`Show all ${rows.length}`;
+  document.getElementById("pubCount").textContent=`${rows.length} of ${P.length} shown${limit<rows.length?" (latest 10)":""}`;
+}
+render();
+
+const S=[
+ ["Usma Bibi","Scalable and adaptive blockchain for IoT: elliptic curve cryptography with varying parameters","PhD CS","Supervisor",1],
+ ["Muhammad Mudassar","Alzheimer's disease detection using deep learning techniques","MSCS","Supervisor",1],
+ ["Rawaish Talat","A deep learning based approach for early detection of Parkinson's disease","MSCS","Supervisor",1],
+ ["Ayesha Zahid","Deep learning based detection and classification of Malabar spinach leaf diseases","MSCS","Supervisor",1],
+ ["Rabia Zahid","Detection of kitchen activities using deep learning for intelligent kitchen systems","MSCS","Supervisor",1],
+ ["Shahzaib Hassan","Blockchain technology for the detection of fabricated Hadiths","MSIT","Supervisor",1],
+ ["Khurram Shehzad","Persuasive technology for self-awareness and early detection of depression","MSIT","Supervisor",1],
+ ["Uzma Chaudhry","Higher education teachers' performance evaluation: knowledge management in the era of big data","MSIT","Supervisor",1],
+ ["Syed Murtaza Hussain Shah","Knowledge management in higher educational institutions for sustainable development","MSIT","Supervisor",1],
+ ["Amara Muqadas","Urdu news clickbait detection from online platforms using machine learning and deep learning","MSCS","Co-supervisor",1],
+ ["Aman Ullah","Automated fabric defect detection in textile production using deep learning","MSCS","Co-supervisor",1],
+ ["Numra Saba","Deep learning framework for automated pest detection and classification in smart agriculture","MSCS","Co-supervisor",1],
+ ["Asia Munir","Computational modeling of programming logic understanding using multimodal learning analytics","PhD CS","Supervisor",0],
+ ["Nisar Ahmad","Elicitation and validation of software requirements using RAG","PhD CS","Supervisor",0],
+ ["Sanam Mushtaq","Intelligibility-aware speech enhancement using deep spectral learning for hearing aids","MSCS","Supervisor",0],
+ ["Shazma Munir","Real-time phishing URL detection using XGBoost and Random Forest with TinyML","MSCS","Supervisor",0],
+ ["Munazza Nawaz","Evaluating large language models for dentistry: fine-tuned, embedded and prompt-engineered GPT","MSCS","Supervisor",0],
+ ["Faryal Zahra","LLM-generated questions and computerized adaptive testing with Bloom's taxonomy","MSCS","Supervisor",0],
+ ["Muhammad Zain-ul-Abideen","AI-powered smart classrooms: curriculum compliance and pedagogical alignment using LLMs","MSCS","Co-supervisor",0],
+ ["Abdul Rauf","—","PhD CS","Supervisor",0],
+ ["Muhammad Rizwan","—","PhD CS","Supervisor",0],
+ ["Anum Saleem","—","PhD CS","Supervisor",0],
+ ["Irum Awan","—","PhD CS","Supervisor",0],
+ ["Taj Mahmood","—","PhD CS","Co-supervisor",0],
+ ["Rashad Mehmood Gondal","—","PhD CS","Co-supervisor",0],
+ ["Abida Naeem","—","PhD CS","Co-supervisor",0],
+ ["Zia ur Rehman","—","PhD CS","Co-supervisor",0]
+];
+document.getElementById("supBody").innerHTML=S.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td class="deg">${r[2]}</td><td>${r[3]}</td><td><span class="st ${r[4]?"done":"on"}">${r[4]?"Graduated":"Ongoing"}</span></td></tr>`).join("");
+const g=S.filter(r=>r[4]).length, phd=S.filter(r=>r[2].startsWith("PhD")).length;
+document.getElementById("supMeta").textContent=`${g} graduated · ${S.length-g} ongoing · ${phd} PhD`;
+
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",async()=>{
+  const el=document.getElementById(b.dataset.copy);
+  try{await navigator.clipboard.writeText(el.textContent);b.textContent="Copied";}
+  catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, press Ctrl+C";}
+  setTimeout(()=>b.textContent="Copy",2000);
+}));
+</script>
+
+</body>
+</html>
